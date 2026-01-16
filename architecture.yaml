@@ -1,31 +1,78 @@
-project: name: Anti-Abuse Voting Prediction System purpose: > Build an open web-based voting and prediction platform that maximizes signal quality while remaining anonymous and accessible.
+project:
+  name: Anti-Abuse Voting Prediction System
+  purpose: >
+    Build an open web-based voting and prediction platform that
+    maximizes signal quality while remaining anonymous and accessible.
 
 core_philosophy:
+  - votes are signals, not identities
+  - voting rights must be minted, not guessed
+  - abuse is inevitable and must be priced out
+  - trust is computed, not assumed
 
-votes are signals, not identities
-voting rights must be minted, not guessed
-abuse is inevitable and must be priced out
-trust is computed, not assumed
 system_layers:
 
-edge: description: Cloudflare-based anti-abuse perimeter functions: - tls_fingerprint - browser_behavior - bot_score - turnstile_challenge - rate_limiting
+  edge:
+    description: Cloudflare-based anti-abuse perimeter
+    functions:
+      - tls_fingerprint
+      - browser_behavior
+      - bot_score
+      - turnstile_challenge
+      - rate_limiting
 
-token_mint: description: Voting-right issuance system responsibilities: - receive mint requests - evaluate risk - issue voting tokens - apply delays and throttling - store issuance metadata
+  token_mint:
+    description: Voting-right issuance system
+    responsibilities:
+      - receive mint requests
+      - evaluate risk
+      - issue voting tokens
+      - apply delays and throttling
+      - store issuance metadata
 
-risk_engine: description: Probabilistic abuse scoring signals: - cloudflare_bot_score - device_reuse - ip_reuse - mint_rate - vote_pattern
+  risk_engine:
+    description: Probabilistic abuse scoring
+    signals:
+      - cloudflare_bot_score
+      - device_reuse
+      - ip_reuse
+      - mint_rate
+      - vote_pattern
 
-token: properties: - cryptographically random - single use - time limited - bound to risk metadata
+  token:
+    properties:
+      - cryptographically random
+      - single use
+      - time limited
+      - bound to risk metadata
 
-vote_api: description: Accepts votes and burns tokens responsibilities: - validate token - ensure unused - record vote - attach metadata
+  vote_api:
+    description: Accepts votes and burns tokens
+    responsibilities:
+      - validate token
+      - ensure unused
+      - record vote
+      - attach metadata
 
-analytics: description: Post-hoc fraud detection and weighting functions: - clustering - anomaly_detection - trust_weighting - retroactive_invalidation
+  analytics:
+    description: Post-hoc fraud detection and weighting
+    functions:
+      - clustering
+      - anomaly_detection
+      - trust_weighting
+      - retroactive_invalidation
 
-results: description: Public prediction layer outputs: - raw_vote_counts - weighted_predictions - confidence_intervals - manipulation_indicators
+  results:
+    description: Public prediction layer
+    outputs:
+      - raw_vote_counts
+      - weighted_predictions
+      - confidence_intervals
+      - manipulation_indicators
 
 mvp_scope:
-
-token minting API
-voting API
-Cloudflare integration
-basic storage
-simple results page
+  - token minting API
+  - voting API
+  - Cloudflare integration
+  - basic storage
+  - simple results page
